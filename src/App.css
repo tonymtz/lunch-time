@@ -1,0 +1,109 @@
+body {
+    text-align: center;
+    padding: 3em;
+}
+
+.dashboard {
+    display: flex;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    margin: 0.5em;
+    position: relative;
+    width: 50%;
+}
+
+.card.big {
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.card h2 {
+    margin: 0;
+}
+
+.card .control {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.card .control button {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-right: none;
+    cursor: pointer;
+    height: 2em;
+    width: 2em;
+}
+
+.calendar {
+}
+
+.month {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 940px;
+}
+
+.calendar .header {
+    display: flex;
+    width: 100%;
+}
+
+.calendar .header .day {
+    color: #ccc;
+    height: 1em;
+    padding: 1em;
+}
+
+.day {
+    align-items: center;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    flex-basis: calc(100% / 7 - 1px);
+    height: 6.5em;
+    padding-top: 1.5em;
+    position: relative;
+}
+
+.day:hover:not(.fill) {
+    background-color: azure;
+}
+
+.day:last-of-type {
+    border-right: 1px solid #ccc;
+}
+
+.date {
+    color: #ccc;
+    position: absolute;
+    right: 0.2em;
+    top: 0.2em;
+}
+
+.event {
+    background-color: #bbd1f7;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    font-size: 12px;
+    margin: 4px 8px;
+    padding: 4px;
+    width: calc(100% - 16px);
+}
+
+.event:hover {
+    background-color: #ccd9f7;
+}
