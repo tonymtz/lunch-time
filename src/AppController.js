@@ -1,6 +1,6 @@
-import { apiCreateIngredient, apiFetchIngredients } from '../lib/apiIngredientsService';
-import { apiCreateMeal, apiFetchMeals } from '../lib/apiMealsService';
-import { apiFetchEvents } from '../lib/apiEventsService';
+import { apiCreateIngredient, apiFetchIngredients } from './lib/apiIngredientsService';
+import { apiCreateMeal, apiFetchMeals } from './lib/apiMealsService';
+import { apiFetchEvents } from './lib/apiEventsService';
 
 export default function ActivitiesController(component) {
     return {

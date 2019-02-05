@@ -3,7 +3,7 @@ import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-d
 import Dashboard from './components/Dashboard';
 import Calendar from './components/calendar/Calendar';
 import Navigation from './components/Navigation';
-import AppController from './components/AppController';
+import AppController from './AppController';
 import {
     IngredientsProvider,
     EventsProvider,
