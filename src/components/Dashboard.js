@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Ingredients from './Ingredients';
 import Meals from './Meals';
-import { IngredientsConsumer, MealsConsumer } from '../app-context';
+import { IngredientsConsumer, MealsConsumer, UnitsConsumer } from '../app-context';
+import Units from './Units';
 
 export default class Dashboard extends Component {
 
@@ -10,22 +11,16 @@ export default class Dashboard extends Component {
             <div className="dashboard">
 
                 <IngredientsConsumer>
-                    { ({ ingredients, loadIngredients, createIngredient }) => (
-                        <Ingredients
-                            createIngredient={ createIngredient }
-                            loadIngredients={ loadIngredients }
-                            ingredients={ ingredients }/>
-                    ) }
+                    { contextProps => <Ingredients { ...contextProps }/> }
                 </IngredientsConsumer>
 
                 <MealsConsumer>
-                    { ({ meals, loadMeals, createMeal }) => (
-                        <Meals
-                            createMeal={ createMeal }
-                            loadMeals={ loadMeals }
-                            meals={ meals }/>
-                    ) }
+                    { contextProps => <Meals { ...contextProps }/> }
                 </MealsConsumer>
+
+                <UnitsConsumer>
+                    { contextProps => <Units { ...contextProps }/> }
+                </UnitsConsumer>
 
             </div>
         );

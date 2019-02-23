@@ -7,7 +7,9 @@ import AppController from './AppController';
 import {
     IngredientsProvider,
     EventsProvider,
-    EventsConsumer, MealsProvider
+    EventsConsumer,
+    MealsProvider,
+    UnitsProvider
 } from './app-context';
 
 import './App.css';
@@ -19,7 +21,8 @@ class App extends Component {
     state = {
         ingredients: [],
         meals: [],
-        events: []
+        events: [],
+        units: []
     };
 
     render() {
@@ -42,37 +45,44 @@ class App extends Component {
             loadEvents: controller.loadEvents
         };
 
+        const unitsContext = {
+            units: this.state.units,
+            loadUnits: controller.loadUnits
+        };
+
         return (
             <IngredientsProvider value={ ingredientsContext }>
                 <MealsProvider value={ mealsContext }>
                     <EventsProvider value={ eventsContext }>
-                        <Router>
+                        <UnitsProvider value={ unitsContext }>
+                            <Router>
 
-                            <div className="App">
+                                <div className="App">
 
-                                <Navigation/>
+                                    <Navigation/>
 
-                                <Switch>
+                                    <Switch>
 
-                                    <Route path='/dashboard' component={ Dashboard }/>
+                                        <Route path='/dashboard' component={ Dashboard }/>
 
-                                    <EventsConsumer>
-                                        { ({ events, loadEvents }) => (
-                                            <Route
-                                                path='/calendar'
-                                                render={ () => (
-                                                    <Calendar events={ events } loadEvents={ loadEvents }/>)
-                                                }/>
-                                        ) }
-                                    </EventsConsumer>
+                                        <EventsConsumer>
+                                            { ({ events, loadEvents }) => (
+                                                <Route
+                                                    path='/calendar'
+                                                    render={ () => (
+                                                        <Calendar events={ events } loadEvents={ loadEvents }/>)
+                                                    }/>
+                                            ) }
+                                        </EventsConsumer>
 
-                                    <Redirect from='/' to='/dashboard'/>
+                                        <Redirect from='/' to='/dashboard'/>
 
-                                </Switch>
+                                    </Switch>
 
-                            </div>
+                                </div>
 
-                        </Router>
+                            </Router>
+                        </UnitsProvider>
                     </EventsProvider>
                 </MealsProvider>
             </IngredientsProvider>

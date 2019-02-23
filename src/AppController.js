@@ -1,6 +1,7 @@
 import { apiCreateIngredient, apiFetchIngredients } from './lib/apiIngredientsService';
 import { apiCreateMeal, apiFetchMeals } from './lib/apiMealsService';
 import { apiFetchEvents } from './lib/apiEventsService';
+import { apiFetchUnits } from './lib/apiUnitsService';
 
 export default function ActivitiesController(component) {
     return {
@@ -8,7 +9,8 @@ export default function ActivitiesController(component) {
         createIngredient,
         loadMeals,
         createMeal,
-        loadEvents
+        loadEvents,
+        loadUnits
     };
 
     function loadIngredients() {
@@ -47,6 +49,14 @@ export default function ActivitiesController(component) {
         apiFetchEvents(year, month)
             .then(events => {
                 component.setState({ events });
+            })
+            .catch(console.error);
+    }
+
+    function loadUnits() {
+        apiFetchUnits()
+            .then(units => {
+                component.setState({ units });
             })
             .catch(console.error);
     }
